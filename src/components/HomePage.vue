@@ -19,15 +19,15 @@
     <section class="section">
       <div class="content">
         <div class="columns is-multiline">
-          <div class="column is-3">
-            <div class="card has-background-">
+          <div class="column is-5">
+            <div class="card has-background-link-light">
               <div class="card-content">
                 <p class="title">
-                  SmartTips
+                  Songkran Trip
                 </p>
-                <p class="subtitle">
-                  Jeff Atwood
-                </p>
+                <!-- <p class="subtitle">
+                  This is trip on 13 April 2023
+                </p> -->
               </div>
               <footer class="card-footer">
                 <p class="card-footer-item">

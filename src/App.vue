@@ -17,14 +17,15 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item">
-        Home
+        <RouterLink to="/">Home</RouterLink>
       </a>
 
       <a class="navbar-item">
-        Documentation
+        <router-link to="/addtrip">CreateTrip</router-link>
       </a>
-
-      
+      <a class="navbar-item">
+        <router-link to="/updatetrip">CreateTrip</router-link>
+      </a>
     </div>
 
     <div class="navbar-end">
@@ -61,11 +62,13 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 
+import { RouterLink } from 'vue-router';
+
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
-  },
+    RouterLink
+},
   data() {
     return {
       showMenu: false
@@ -86,12 +89,11 @@ export default {
   font-family: 'Prompt', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 #wrapper {
-  width: 414px;
-  height: 896px;
+  width: auto;
+  height: 1000px;
   background-color: rgb(183, 154, 131);
   background-image: linear-gradient(rgb(254, 254, 236), rgb(218, 247, 248), rgb(220, 239, 202));
   
