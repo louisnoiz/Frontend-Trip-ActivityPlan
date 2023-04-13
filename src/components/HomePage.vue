@@ -8,6 +8,7 @@
         <div class="columns">
           <div class="column is-half">
             <input class="input" type="text" placeholder="Search Trip">
+            
           </div>
           <div class="column is-half">
             <button class="button">Search</button>
@@ -22,8 +23,7 @@
             <div class="card has-background-">
               <div class="card-content">
                 <p class="title">
-                  “There are two hard things in computer science: cache invalidation, naming things, and off-by-one
-                  errors.”
+                  SmartTips
                 </p>
                 <p class="subtitle">
                   Jeff Atwood

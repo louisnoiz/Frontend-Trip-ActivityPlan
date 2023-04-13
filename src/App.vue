@@ -52,7 +52,7 @@
     </div>
   </div>
 </nav>
-<Home/>
+<router-view :key="$route.fullPath"/>
 </div>
 
 </template>
@@ -60,13 +60,11 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import Home from './components/HomePage.vue';
 
 export default {
   name: 'App',
   components: {
     // HelloWorld,
-    Home
   },
   data() {
     return {
@@ -82,18 +80,20 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300&family=Prompt:wght@200;300;500&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans Thai', sans-serif;
+  font-family: 'Prompt', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 #wrapper {
-  width: auto;
-  height: 100%;
+  width: 414px;
+  height: 896px;
   background-color: rgb(183, 154, 131);
-  background-image: linear-gradient(rgb(231, 234, 199), rgb(196, 236, 238), rgb(210, 246, 177));
-  height: 100%;
+  background-image: linear-gradient(rgb(254, 254, 236), rgb(218, 247, 248), rgb(220, 239, 202));
+  
 }
 </style>
