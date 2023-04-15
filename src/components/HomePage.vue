@@ -14,6 +14,10 @@
           </div>
         </div>
       </div>
+      <div class="buttons is-right">
+        <button class="button is-success" @click="test()">TEST</button>
+        <button class="button is-info" @click="add()">Add Trip</button>
+      </div>
     </section>
     <section class="section">
       <div class="content">
@@ -45,35 +49,38 @@ export default {
   name: "app",
   data() {
     return {
-      listTrip: [
-        {
-          name: "Songkran Trip",
-          day: [
-            {
-              id: 1,
-              location: "aaa"
-            },
-            {
-              id: 2,
-              location: "bbb"
-            }
-          ]
-        },
-        {
-          name: "Japan",
-          day: [
-            {
-              id: 1,
-              location: "aaa"
-            }
-          ]
-        }
-      ]
+      listTrip: []
     }
   },
+  mounted() {
+    this.listTrip = JSON.parse(localStorage.getItem("trip"))
+  },
+  unmounted() {
+    localStorage.setItem("trip", JSON.stringify(this.listTrip));
+  },
   methods: {
+    test(){
+      // localStorage.setItem("trip", JSON.stringify(this.listTrip));
+      this.listTrip.push({
+        name: "New",
+        day: [
+          {
+            id:1,
+            location: "123"
+          }
+        ]
+      })
+    },
     edit() {
       this.$router.push({path: "/updatetrip"})
+    },
+    add() {
+      this.$router.push({path: "/addtrip"})
+    },
+    delete() {
+      this.listTrip.map(() => {
+
+      })
     }
   }
 }
