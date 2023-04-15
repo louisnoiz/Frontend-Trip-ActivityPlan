@@ -53,7 +53,13 @@ export default {
     }
   },
   mounted() {
-    this.listTrip = JSON.parse(localStorage.getItem("trip"))
+    if (localStorage.getItem('trip') !== null){
+      this.listTrip = JSON.parse(localStorage.getItem("trip"))
+    }
+    else{
+      this.listTrip = []
+      localStorage.setItem("trip", JSON.stringify(this.listTrip))
+    }
   },
   unmounted() {
     localStorage.setItem("trip", JSON.stringify(this.listTrip));
