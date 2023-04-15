@@ -52,21 +52,21 @@ export default {
       listTrip: []
     }
   },
-  mounted() {
-    if (localStorage.getItem('trip') !== null){
-      this.listTrip = JSON.parse(localStorage.getItem("trip"))
+  created() {
+    const data = JSON.parse(localStorage.getItem("trip"))
+    if (data){
+      this.listTrip = data
     }
-    else{
-      this.listTrip = []
-      localStorage.setItem("trip", JSON.stringify(this.listTrip))
-    }
+    window.addEventListener('beforeunload', this.handleBeforeUnload)
   },
-  unmounted() {
-    localStorage.setItem("trip", JSON.stringify(this.listTrip));
+  beforeUnmount() {
+    window.removeEventListener('beforeunload', this.handleBeforeUnload)
   },
   methods: {
+    handleBeforeUnload() {
+      localStorage.setItem("trip", JSON.stringify(this.listTrip));
+    },
     test(){
-      // localStorage.setItem("trip", JSON.stringify(this.listTrip));
       this.listTrip.push({
         name: "New",
         day: [
