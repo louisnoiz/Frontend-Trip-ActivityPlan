@@ -24,7 +24,10 @@
         <router-link to="/addtrip">CreateTrip</router-link>
       </a>
       <a class="navbar-item">
-        <router-link to="/updatetrip">CreateTrip</router-link>
+        <router-link to="/updatetrip">UpdateTrip</router-link>
+      </a>
+      <a class="navbar-item">
+        <router-link to="/tripdetail">DetailTrip</router-link>
       </a>
     </div>
 

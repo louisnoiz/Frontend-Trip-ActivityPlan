@@ -6,26 +6,30 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../components/HomePage.vue') // set home as path '/'
+    component: () => import('../components/HomePage.vue')
   },
   {
     path: '/addtrip',
     name: 'Add Trip',
-    component: () => import('../components/AddTrip.vue') // set home as path '/'
+    component: () => import('../components/AddTrip.vue')
   },
   {
     path: '/updatetrip',
     name: 'Edit Trip',
-    component: () => import('../components/EditTrip.vue') // set home as path '/'
+    component: () => import('../components/EditTrip.vue')
+  },
+  {
+    path: '/tripdetail',
+    name: 'Trip Detail',
+    component: () => import('../components/TripDetail.vue')
   }
 
 ]
 
 
 const router = createRouter({
-    // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
     history: createWebHashHistory(),
-    routes, // short for `routes: routes`
+    routes,
   })
 
 
