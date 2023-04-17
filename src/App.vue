@@ -87,19 +87,16 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300&family=Prompt:wght@200;300;500&display=swap');
 
-#app {
+body {
   font-family: 'Noto Sans Thai', sans-serif;
   font-family: 'Prompt', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  background-color: rgb(183, 154, 131);
+  background-size: auto auto;
+  background-image: linear-gradient(rgb(254, 254, 236), rgb(218, 247, 248), rgb(220, 239, 202));
+  min-height: 100vh;
 }
 
-#wrapper {
-  width: 100vw;
-  height: auto;
-  background-color: rgb(183, 154, 131);
-  background-size: auto 100%;
-  background-image: linear-gradient(rgb(254, 254, 236), rgb(218, 247, 248), rgb(220, 239, 202));
-}
 </style>

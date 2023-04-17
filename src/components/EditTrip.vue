@@ -6,7 +6,7 @@
             </div>
         </section>
         <section class="px-6 mb-4">
-            <label class="title">Trip Name: {{trip.name}}</label>
+            <label class="title">Trip: {{trip.name}}</label>
         </section>
         <div class="columns">
             <div class="column">
@@ -124,8 +124,8 @@ export default {
                     trip = this.trip
                 }
             })
-            console.log(this.tripList)
             localStorage.setItem("trip", JSON.stringify(this.tripList));
+            this.$router.push({ path: "/" })
         },
         addDay() {
             this.trip.days.push({

@@ -24,6 +24,7 @@
                 </p>
               </div>
               <footer class="card-footer">
+                <router-link class="card-footer-item" id='button' :to="`/tripdetail/${trip.name}`">Detail</router-link>
                 <router-link class="card-footer-item" id='button' :to="`/updatetrip/${trip.name}`">Edit</router-link>
                 <a class="card-footer-item" @click="del(trip.name)">Delete</a>
               </footer>
@@ -33,6 +34,22 @@
       </div>
     </section>
   </div>
+  <div class="modal" :class="{ 'is-active': showModal }">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Delete Trip</p>
+        <button class="delete" aria-label="close" @click="showModal = false"></button>
+      </header>
+      <section class="modal-card-body">
+        Are You Sure To Delete Trip: {{ selectDel }}
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-danger" @click="confirmDel()">Delete</button>
+        <button class="button" @click="showModal = false">Cancel</button>
+      </footer>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -40,6 +57,8 @@ export default {
   name: "app",
   data() {
     return {
+      showModal: false,
+      selectDel: "",
       tripList: []
     }
   },
@@ -57,10 +76,15 @@ export default {
       this.$router.push({ path: "/addtrip" })
     },
     del(name) {
-      this.tripList.filter((trip) => {
-        return trip.name != name
+      this.showModal = true
+      this.selectDel = name
+    },
+    confirmDel(){
+      this.tripList = this.tripList.filter((trip) => {
+        return trip.name != this.selectDel
       })
-      console.log(this.tripList)
+      this.set()
+      this.showModal = false
     }
   }
 }

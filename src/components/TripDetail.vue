@@ -10,9 +10,9 @@
 
         </section> -->
         <section class="section">
-            <div class="content" v-for="(trip, index) in listTrips" :key="index">
+            <div class="content">
                 <p class="title">
-                    {{ trip.name }}
+                    Trip: {{ trip.name }}
                 </p>
                 <div class="columns">
                     <div class="column">
@@ -20,22 +20,27 @@
                             <div class="card-content">
                                 <div class="content">
                                     <div class="field" v-for="(day, index) in trip.days" :key="index">
-                                        <label class="label">&emsp; Day : {{ day.date }}</label>
+                                        <label class="label">&emsp; Day : {{ dateformat(day.date) }}</label>
                                         <div class="field" v-for="(activity, index) in day.activities" :key="index">
-                                            <label class="label">&emsp;&emsp; -{{ activity.time }} {{ activity.name
-                                            }}</label>
+                                            <label class="label">&emsp;&emsp;&emsp;- Activity: {{ activity.name }}</label>
+                                            <label class="label" v-if="activity.time">&emsp;&emsp;&emsp;&emsp;Time: {{
+                                                timeformat(activity.time[0]) }} - {{ timeformat(activity.time[1]) }}
+                                            </label>
                                             <label class="label"> </label>
-                                            <label class="label">&emsp;&emsp;&emsp; Note: {{ activity.note }}</label>
+                                            <label class="label">&emsp;&emsp;&emsp;&emsp;Note: {{ activity.note }}</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
+            <div class="control">
+                <button @click="$router.go(-1)" class="button is-info">Back</button>
+            </div>
         </section>
+
     </div>
 </template>
   
@@ -44,74 +49,33 @@ export default {
     name: "app",
     data() {
         return {
-            listTrips: [{
-                "name": "Taifhoon Trip",
-                "days": [
-                    {
-                        "date": "2023-04-15",
-                        "activities": [
-                            {
-                                "time": "10:00",
-                                "name": "play water",
-                                "note": "eiei"
-                            },
-                            {
-                                "time": "14:00",
-                                "name": "up mountain",
-                                "note": "eiki"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2023-04-16",
-                        "activities": [
-                            {
-                                "time": "09:00",
-                                "name": "Activity Name",
-                                "note": "Activity Note"
-                            }
-                        ]
-                    }
-                ]
-            }]
+            trip: {}
         }
     },
     mounted() {
-        // if (localStorage.getItem('trip') !== null) {
-        //     this.listTrip = JSON.parse(localStorage.getItem("trip"))
-        // }
-        // else {
-        //     this.listTrip = []
-        //     localStorage.setItem("trip", JSON.stringify(this.listTrip))
-        // }
-    },
-    unmounted() {
-        // localStorage.setItem("trip", JSON.stringify(this.listTrip));
+        const data = JSON.parse(localStorage.getItem("trip"))
+        let name = this.$route.params.name
+        this.trip = data.filter((trip) => {
+            return trip.name == name
+        })[0]
     },
     methods: {
-        // test() {
-        //     // localStorage.setItem("trip", JSON.stringify(this.listTrip));
-        //     this.listTrip.push({
-        //         name: "New",
-        //         day: [
-        //             {
-        //                 id: 1,
-        //                 location: "123"
-        //             }
-        //         ]
-        //     })
-        // },
-        // edit() {
-        //     this.$router.push({ path: "/updatetrip" })
-        // },
-        // add() {
-        //     this.$router.push({ path: "/addtrip" })
-        // },
-        // delete() {
-        //     this.listTrip.map(() => {
-
-        //     })
-        // }
+        dateformat(date) {
+            var d = new Date(date)
+            if (date) {
+                return d.toDateString()
+            }
+            return ""
+        },
+        timeformat(obj) {
+            console.log(obj);
+            const dateObj = new Date();
+            dateObj.setHours(obj.hours);
+            dateObj.setMinutes(obj.minutes);
+            dateObj.setSeconds(obj.seconds);
+            const formattedTime = dateObj.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+            return formattedTime;
+        }
     }
 }
 </script>
