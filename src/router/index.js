@@ -14,12 +14,12 @@ const routes = [
     component: () => import('../components/AddTrip.vue')
   },
   {
-    path: '/updatetrip',
+    path: '/updatetrip/:name',
     name: 'Edit Trip',
     component: () => import('../components/EditTrip.vue')
   },
   {
-    path: '/tripdetail',
+    path: '/tripdetail/:name',
     name: 'Trip Detail',
     component: () => import('../components/TripDetail.vue')
   }

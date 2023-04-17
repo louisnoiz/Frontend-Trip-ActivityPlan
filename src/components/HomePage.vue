@@ -5,17 +5,8 @@
         <p class="title">
           Your Trip
         </p>
-        <div class="columns">
-          <div class="column is-half">
-            <input class="input" type="text" placeholder="Search Trip" />
-          </div>
-          <div class="column is-half">
-            <button class="button">Search</button>
-          </div>
-        </div>
       </div>
       <div class="buttons is-right">
-        <button class="button is-success" @click="test()">TEST</button>
         <button class="button is-info" @click="add()">Add Trip</button>
       </div>
     </section>
@@ -23,18 +14,18 @@
       <div class="content">
         <div class="columns">
           <div class="column">
-            <div class="card has-background-link-light mb-5" v-for="(trip, index) in listTrip" :key="index">
+            <div class="card has-background-link-light mb-5" v-for="(trip, index) in tripList" :key="index">
               <div class="card-content">
                 <p class="title">
                   {{ trip.name }}
                 </p>
                 <p class="subtitle">
-                  This is trip have duration {{ trip.day.length }} day
+                  This is trip have duration {{ trip.days.length }} day
                 </p>
               </div>
               <footer class="card-footer">
-                <a class="card-footer-item" @click="edit()">Edit</a>
-                <a class="card-footer-item">Delete</a>
+                <router-link class="card-footer-item" id='button' :to="`/updatetrip/${trip.name}`">Edit</router-link>
+                <a class="card-footer-item" @click="del(trip.name)">Delete</a>
               </footer>
             </div>
           </div>
@@ -49,44 +40,27 @@ export default {
   name: "app",
   data() {
     return {
-      listTrip: []
+      tripList: []
     }
   },
   created() {
     const data = JSON.parse(localStorage.getItem("trip"))
-    if (data){
-      this.listTrip = data
+    if (data) {
+      this.tripList = data
     }
-    window.addEventListener('beforeunload', this.handleBeforeUnload)
-  },
-  beforeUnmount() {
-    window.removeEventListener('beforeunload', this.handleBeforeUnload)
   },
   methods: {
-    handleBeforeUnload() {
-      localStorage.setItem("trip", JSON.stringify(this.listTrip));
-    },
-    test(){
-      this.listTrip.push({
-        name: "New",
-        day: [
-          {
-            id:1,
-            location: "123"
-          }
-        ]
-      })
-    },
-    edit() {
-      this.$router.push({path: "/updatetrip"})
+    set() {
+      localStorage.setItem("trip", JSON.stringify(this.tripList));
     },
     add() {
-      this.$router.push({path: "/addtrip"})
+      this.$router.push({ path: "/addtrip" })
     },
-    delete() {
-      this.listTrip.map(() => {
-
+    del(name) {
+      this.tripList.filter((trip) => {
+        return trip.name != name
       })
+      console.log(this.tripList)
     }
   }
 }

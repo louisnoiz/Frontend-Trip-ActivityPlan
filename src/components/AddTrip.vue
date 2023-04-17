@@ -19,8 +19,6 @@
                     <div class="field" v-for="(day, index) in trip.days" :key="index">
                         <label class="label">Day: {{ dateformat(day.date) }}</label>
                         <Datepicker disabledTime="true" v-model="day.date"></Datepicker>
-                        <!-- <VueDatePicker v-model="day.date" :enable-time-picker="false"></VueDatePicker> -->
-
                         <div class="field" v-for="(activity, index) in day.activities" :key="index">
                             <label class="label">Activity: {{ activity.name }}</label>
                             <div class="control mt-3">
@@ -36,7 +34,6 @@
                         </div>
                         <Button class="button" @click="addActivity(index)">Add Activity</Button>
                     </div>
-
                 </section>
                 <section class="px-6">
                     <Button class="button" @click="addDay()">Add day</Button>
@@ -50,9 +47,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </template>
 
@@ -84,19 +79,16 @@ export default {
                 return data.name == this.trip.name
             })
             if (d.length) {
-                console.log(d)
                 alert("Trip Name is Already Use")
             }
-            else if (this.trip.name == ""){
+            else if (this.trip.name == "") {
                 alert("Not set Trip Name Yet")
             }
-            else{
-                console.log("save")
+            else {
                 this.tripList.push(this.trip)
                 localStorage.setItem("trip", JSON.stringify(this.tripList));
                 this.$router.push({ path: "/" })
             }
-            
         },
         addDay() {
             this.trip.days.push({

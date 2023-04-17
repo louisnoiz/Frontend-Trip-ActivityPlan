@@ -18,6 +18,7 @@ specifiers:
   vue: ^3.2.47
   vue-cli-plugin-tailwind: ~3.0.0
   vue-router: ^4.1.6
+  vuejs3-datepicker: ^1.0.16
 
 dependencies:
   '@vuepic/vue-datepicker': 4.3.0_vue@3.2.47
@@ -29,6 +30,7 @@ dependencies:
   tailwindcss: 3.3.1_postcss@8.4.21
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
+  vuejs3-datepicker: 1.0.16
 
 devDependencies:
   '@babel/core': 7.21.4
@@ -1237,7 +1239,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-    dev: true
 
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
@@ -5726,6 +5727,11 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
+  /prismjs/1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+    engines: {node: '>=6'}
+    dev: false
+
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
@@ -5872,7 +5878,6 @@ packages:
 
   /regenerator-runtime/0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
-    dev: true
 
   /regenerator-transform/0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}
@@ -6845,6 +6850,14 @@ packages:
       '@vue/runtime-dom': 3.2.47
       '@vue/server-renderer': 3.2.47_vue@3.2.47
       '@vue/shared': 3.2.47
+
+  /vuejs3-datepicker/1.0.16:
+    resolution: {integrity: sha512-qaalbbyW+X5xRV/sKEy+36PAdViLO9I4EYEMsaBQZ88VaZ2wONZ43vXMYQQ0QYRmuPFnkYn6JcxA2RLMpq/8pg==}
+    dependencies:
+      '@babel/runtime': 7.21.0
+      prismjs: 1.29.0
+      vue: 3.2.47
+    dev: false
 
   /watchpack/2.4.0:
     resolution: {integrity: sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg==}
